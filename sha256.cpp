@@ -6,9 +6,15 @@
 
 #include "sha256.h"
 
+#if defined(__APPLE__)
+#if defined(__BIG_ENDIAN__)
+#define __BYTE_ORDER __BIG_ENDIAN
+#endif
+#else
 // big endian architectures need #define __BYTE_ORDER __BIG_ENDIAN
 #ifndef _MSC_VER
 #include <endian.h>
+#endif
 #endif
 
 //#define SHA2_224_SEED_VECTOR
